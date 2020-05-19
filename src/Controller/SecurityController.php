@@ -11,17 +11,14 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    private $githubClient;
     private $instagramClient;
 
     /**
      * SecurityController constructor
-     * @param $githubClient
      * @param $instagramClient
      */
-    public function __construct($githubClient, $instagramClient)
+    public function __construct($instagramClient)
     {
-        $this->githubClient = $githubClient;
         $this->instagramClient = $instagramClient;
     }    
 
@@ -48,16 +45,6 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
-    }
-
-    /**
-     * APPEL API GITHUB
-     * @Route("/login/github", name="github")
-     */
-    public function github(UrlGeneratorInterface $generator)
-    {
-        $url = $generator->generate('app', [], UrlGeneratorInterface::ABSOLUTE_URL );
-        return new RedirectResponse("https://github.com/login/oauth/authorize?client_id=$this->githubClient&redirect_uri=$url");
     }
 
     /**

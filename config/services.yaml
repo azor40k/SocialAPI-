@@ -12,8 +12,6 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
         bind:
-            $githubClient: '%env(resolve:GITHUB_CLIENT)%'
-            $githubId: '%env(resolve:GITHUB_ID)%'
             $instagramClient: '%env(resolve:INSTAGRAM_CLIENT)%'
             $instagramId: '%env(resolve:INSTAGRAM_ID)%'
 

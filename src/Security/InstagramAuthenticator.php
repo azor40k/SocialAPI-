@@ -34,8 +34,8 @@ class InstagramAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $this->provider->loadUserFromInstagram($credentials['code']);
-        return new User(); 
+        // dd($credentials);
+         return $this->provider->loadUserFromInstagram($credentials['code']);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -45,12 +45,14 @@ class InstagramAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        // todo
+        $data = [
+            'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
+        ];
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // todo
+        return null;
     }
 
     public function start(Request $request, AuthenticationException $authException = null)
@@ -60,6 +62,6 @@ class InstagramAuthenticator extends AbstractGuardAuthenticator
 
     public function supportsRememberMe()
     {
-        // todo
+        return false;
     }
 }

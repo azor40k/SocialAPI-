@@ -9,12 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/azor40k/AXELGANDI/axelcarandang.com/htdocs/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/azor40k/AXELGANDI/axelcarandang.com/htdocs/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
+    <h1>Welcome <span class="text-primary">{{app.user.username }}</span> from Instagram ✅</h1>
+    {# <h2>Your IG Id is <span class="text-success">{{app.user.igId }}</span> </h2> #}
+
+    <h3>Instagram info & content coming soon! (I hope)</h3>
+
 </div>
 {% endblock %}
