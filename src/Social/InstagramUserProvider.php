@@ -42,23 +42,25 @@ class InstagramUserProvider
             ]            
         ]);
 
-        
+        // dd($response->toArray());
 
         $token = $response->toArray()['access_token'];
         $user = $response->toArray()['user_id'];
 
-        $query = sprintf("https://graph.instagram.com/%s?fields=id,username&access_token=%s",
+        $query = sprintf("https://graph.instagram.com/%s?fields=id,username,media_count,account_type&access_token=%s",
         $user,$token);
 
-        $response = $this->httpClient->request('GET', $query, [
+        $info = $this->httpClient->request('GET', $query, [
             'headers' => [
                 'Authorization' => 'token '.$token
             ],
         ]);
 
-        $data = $response->toArray();
+        // dd($info->toArray());
 
-        return new User($data);
+        $data = $info->toArray();
+
+        return new User($data, $token);
 
     }
 }

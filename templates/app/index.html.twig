@@ -4,16 +4,38 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 1em auto; max-width: 80%; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    .grid-product{display: grid;grid-template-columns: repeat(3, 1fr);}
+    @media screen and (max-width:1200px){.grid-product{grid-template-columns: repeat(3, 1fr);}}
+    @media screen and (max-width:1000px){.grid-product{grid-template-columns: repeat(2, 1fr);}}
+    @media screen and (max-width:780px){.grid-product{grid-template-columns: repeat(1, 1fr);}}
 </style>
 
-<div class="example-wrapper">
+<div class="example-wrapper text-center">
 
     <h1>Welcome <span class="text-primary">{{app.user.username }}</span> from Instagram ✅</h1>
-    {# <h2>Your IG Id is <span class="text-success">{{app.user.igId }}</span> </h2> #}
+    {# <h2>Your ig token <span class="text-success">{{app.user.token }}</span> </h2> #}
+    <h2>Your IG ID is <span class="text-success">{{app.user.igId }}</span> </h2>
+    <h2>You have <span class="text-success">{{app.user.media }} picture(s)</span> </h2>
+    <h2><span class="text-success">{{app.user.account }} </span> account</h2><br/><br/>
 
-    <h3>Instagram info & content coming soon! (I hope)</h3>
+
+    <div class="grid-product text-center">   
+    
+    {% for media in contents.data %}
+    <div class="border border-primary" style="height:400px;width:280px;margin:auto;"><br/>
+
+    <div><img src="{{ media.media_url }}" class="rounded" style="max-height:270px;max-width:260px;margin:auto;"/></div><br/>    
+    <div><h4>{{ media.caption }}</h4></div><br/>
+
+    </div>
+    {% endfor %}
+    
+    
+
+    </div>
 
 </div>
 {% endblock %}

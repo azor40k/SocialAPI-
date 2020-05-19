@@ -41,6 +41,11 @@ class User implements UserInterface
      */
     private $username;
 
+    private $igId;
+    private $media;
+    private $account;
+    private $token;
+
 
     public function getId(): ?int
     {
@@ -127,8 +132,45 @@ class User implements UserInterface
         return $this;
     }
 
-    public function __construct(array $data = [])
+    public function __construct(array $data = [], $token)
     {
         $this->username = $data['username'];
+        $this->igId = $data['id'];
+        $this->media = $data['media_count'];
+        $this->account = $data['account_type'];
+        $this->token = $token;
     }
+
+    /**
+     * @mixed
+    */
+    public function getIgId() 
+    {
+        return $this->igId;
+    }
+
+     /**
+     * @mixed
+    */
+    public function getMedia() 
+    {
+        return $this->media;
+    }
+
+     /**
+     * @mixed
+    */
+    public function getAccount() 
+    {
+        return $this->account;
+    }
+
+    /**
+     * @mixed
+    */
+    public function getToken() 
+    {
+        return $this->token;
+    }
+
 }
