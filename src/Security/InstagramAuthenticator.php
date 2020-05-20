@@ -36,6 +36,7 @@ class InstagramAuthenticator extends AbstractGuardAuthenticator
     {
         dd($credentials);
         //  return $this->provider->loadUserFromInstagram($credentials['code']);
+        //test
     }
 
     public function checkCredentials($credentials, UserInterface $user)
