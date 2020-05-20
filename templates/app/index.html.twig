@@ -15,13 +15,14 @@
 
 <div class="example-wrapper text-center">
 
+    {# affichage info USER #}
     <h1>Welcome <span class="text-primary">{{app.user.username }}</span> from Instagram ✅</h1>
-    {# <h2>Your ig token <span class="text-success">{{app.user.token }}</span> </h2> #}
     <h2>Your IG ID is <span class="text-success">{{app.user.igId }}</span> </h2>
     <h2>You have <span class="text-success">{{app.user.media }} picture(s)</span> </h2>
     <h2><span class="text-success">{{app.user.account }} </span> account</h2><br/><br/>
 
 
+    {# affichage media instagram du user #}
     <div class="grid-product text-center">   
     
     {% for media in contents.data %}

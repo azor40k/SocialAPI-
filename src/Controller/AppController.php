@@ -30,17 +30,6 @@ class AppController extends AbstractController
         $user = $this->getUser()->getIgId();
         $token = $this->getUser()->getToken();
 
-
-        // $query = sprintf("https://graph.instagram.com/%s/media?access_token=%s",
-        // $user,$token);
-
-        // $info = $this->httpClient->request('GET', $query, [
-        //     'headers' => [
-        //         'Authorization' => 'token '.$token
-        //     ],
-        // ]);
-
-
         $media = sprintf("https://graph.instagram.com/%s/media?fields=id,caption,media_url,timestamp&access_token=%s",
         $user,$token);
 
